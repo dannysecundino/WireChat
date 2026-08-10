@@ -1,0 +1,13 @@
+1. std::string e std::string_view
+string_view não guarda a string, só uma visão dela, impedindo que se crie uma cópia
+"std::string é dono do texto. std::string_view só observa o texto."
+use string quando vc quiser alterar o texto dps. use string_view quando vc quiser só observar o texto.
+
+
+
+
+
+
+TODO:
+a. pensar melhor na divisão de arquivos entre server e client.
+-> a interface gráfica que está sendo feita faz sentido com um cliente com um "executável" próprio.
