@@ -3,7 +3,12 @@ string_view não guarda a string, só uma visão dela, impedindo que se crie uma
 "std::string é dono do texto. std::string_view só observa o texto."
 use string quando vc quiser alterar o texto dps. use string_view quando vc quiser só observar o texto.
 
-
+2. convenção:
+arquivo:    minúsculo
+classe:     PascalCase
+função:     snake_case
+variável:   s/ convenção
+namespace:  minúsculo
 
 
 
