@@ -1,4 +1,4 @@
-#include "../headers/GUI.hpp"
+#include "../headers/gui.hpp"
 
 #include <iostream>
 #include <string_view>
@@ -101,7 +101,7 @@ std::string receber_texto(){    // função que é para ser muito importante em 
 }
 
 // funções que estão no header
-std::string GUI::tela_inicial(){
+std::string gui::tela_inicial(){
     limpar_tela();
     imprimir_cabecalho();
     imprimir_about();
