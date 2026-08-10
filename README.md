@@ -1,3 +1,3 @@
 # WireChat
 
-Chat feito em C++.
+Chat de propósito geral feito em C++.
