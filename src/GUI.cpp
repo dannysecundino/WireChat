@@ -1,11 +1,11 @@
 #include "../headers/GUI.hpp"
 
-#include <string_view>
-
 #include <iostream>
+#include <string_view>
 #include <string>
 
-void GUI::pintar_caracteres(std::string_view cor) {
+// funções de detalhes de implementação
+void pintar_caracteres(std::string_view cor) {
     if (cor == "reset") 
         std::cout << "\033[0m";
     
@@ -33,7 +33,7 @@ void GUI::pintar_caracteres(std::string_view cor) {
     else if (cor == "branco") 
         std::cout << "\033[37m";
     
-    else if (cor == "preto_claro") 
+    else if (cor == "cinza") // preto_claro
         std::cout << "\033[90m";
     
     else if (cor == "vermelho_claro") 
@@ -59,7 +59,11 @@ void GUI::pintar_caracteres(std::string_view cor) {
     
 }
 
-void GUI::imprimir_cabecalho(){
+void limpar_tela(){
+    std::cout << "\033[2J\033[H";
+}
+
+void imprimir_cabecalho(){
     // como a barra já indica um char diferente (ex.: \n), vamos usar uma coisa camada RAW STRING LITERAL (guarda literalmente a string, sem interpretar o que está dentro dela)
     std::string titulo = 
 R"( _       ___           ________          __ 
@@ -77,3 +81,33 @@ R"( _       ___           ________          __
     std::cout << "A C++ network project by a curious student\n" ;
 }
 
+void imprimir_about(){
+    pintar_caracteres("cinza");
+    std::cout << "About the project: WireChat is a general-purpose chat application\n";
+    std::cout << "developed by Danny Secundino. Here, you can talk with your friends\n";
+    std::cout << "and enjoy good times. It gets even better when you remember that\n";
+    std::cout << "this is a C++ application created by integrating knowledge of\n";
+    std::cout << "Software Engineering, OOP, and Computer Networking. Welcome!\n";
+    pintar_caracteres("reset");
+}
+
+std::string receber_texto(){    // função que é para ser muito importante em todo o projeto
+    // declarar string
+    std::string texto;
+    // receber conteúdo
+    std::cin >> texto;
+    // retornar string
+    return texto;
+}
+
+// funções que estão no header
+std::string GUI::tela_inicial(){
+    limpar_tela();
+    imprimir_cabecalho();
+    imprimir_about();
+
+    std::cout << "Before we continue, I wanna know a thing about you: How should we call you?\n";
+    std::cout << "> ";
+    std::string nome = receber_texto();
+    return nome;
+}

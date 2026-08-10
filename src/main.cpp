@@ -1,7 +1,11 @@
 #include "../headers/GUI.hpp"
 
+#include <iostream>
+#include <string>
+
 int main(){
-    GUI::imprimir_cabecalho();
+    std::string nome = GUI::tela_inicial();
+    std::cout << nome << '\n';
 
     return 0;
 }
