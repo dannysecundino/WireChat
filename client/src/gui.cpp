@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string_view>
 #include <string>
+#include <vector>
 
 // funções de detalhes de implementação
 void pintar_caracteres(std::string_view cor) {
@@ -100,6 +101,12 @@ std::string receber_texto(){    // função que é para ser muito importante em 
     return texto;
 }
 
+void listar_salas(std::vector <std::string> salas){
+    for (std::string sala:salas){
+        std::cout << sala << '\n';
+    }
+}
+
 // funções que estão no header
 std::string gui::tela_inicial(){
     limpar_tela();
@@ -110,4 +117,16 @@ std::string gui::tela_inicial(){
     std::cout << "> ";
     std::string nome = receber_texto();
     return nome;
+}
+
+std::string gui::menu(std::vector <std::string> salas){
+    limpar_tela();
+    imprimir_cabecalho();
+
+    std::cout << "Choose a room:\n";
+    listar_salas(salas);
+
+    std::cout << "> ";
+    std::string sala = receber_texto();
+    return sala;
 }

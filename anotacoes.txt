@@ -14,5 +14,4 @@ namespace:  minúsculo
 
 
 TODO:
-a. pensar melhor na divisão de arquivos entre server e client.
--> a interface gráfica que está sendo feita faz sentido com um cliente com um "executável" próprio.
+a. receber a resposta do server (saber se já tem alguém com aquele nome) [client.cpp]

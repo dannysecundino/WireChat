@@ -7,7 +7,6 @@
 #include <sys/socket.h>     // socket()
 #include <netinet/in.h>     // endereço de socket
 #include <unistd.h>         // close()
-#include <string.h>
 
 #define BUFFER_SIZE 4096
 
