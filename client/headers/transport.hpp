@@ -4,7 +4,7 @@
 #include <string_view>
 
 
-namespace network {
+namespace transport {
     int criar_client_socket();
     int conectar_ao_server(int sock, int PORT);     // vai ficar no local host por enquanto
 

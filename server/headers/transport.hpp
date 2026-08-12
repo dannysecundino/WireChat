@@ -3,7 +3,7 @@
 #include <string>
 #include <string_view>
 
-namespace network {
+namespace transport {
     int criar_lsock(int PORT, int BACKLOG);
     int aceitar_cliente(int lsock);
 

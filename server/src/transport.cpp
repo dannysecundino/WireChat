@@ -1,4 +1,4 @@
-#include "../headers/network.hpp"
+#include "../headers/transport.hpp"
 
 #include <iostream>
 #include <string>
@@ -22,7 +22,7 @@ void preencher_endereco(struct sockaddr_in* endereco, int PORT){
 
 
 // funções do namespace
-int network::criar_lsock(int PORT, int BACKLOG){
+int transport::criar_lsock(int PORT, int BACKLOG){
     // criar socket
     int lsock = socket(AF_INET, SOCK_STREAM, 0);
     if(lsock == -1){
@@ -58,7 +58,7 @@ int network::criar_lsock(int PORT, int BACKLOG){
     return lsock;
 }
 
-int network::aceitar_cliente(int lsock){
+int transport::aceitar_cliente(int lsock){
     // para o accept()
     struct sockaddr_in clientAdress;
     socklen_t size_clientAdress = sizeof(clientAdress);
@@ -70,11 +70,11 @@ int network::aceitar_cliente(int lsock){
     return csock;
 }
 
-void network::enviar(int csock, std::string_view msg){
+void transport::enviar(int csock, std::string_view msg){
     send(csock, msg.data(), msg.size(), 0);
 }
 
-std::string network::receber(int csock){
+std::string transport::receber(int csock){
     char msg[BUFFER_SIZE];
     ssize_t msgSize = recv(csock, msg, sizeof(msg) - 1, 0);
     if (msgSize > 0){
@@ -85,7 +85,7 @@ std::string network::receber(int csock){
     }
 }
 
-void network::fechar_socket(int sock){
+void transport::fechar_socket(int sock){
     close(sock);
 }
 

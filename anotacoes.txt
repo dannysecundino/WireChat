@@ -15,3 +15,6 @@ namespace:  minúsculo
 
 TODO:
 a. receber a resposta do server (saber se já tem alguém com aquele nome) [client.cpp]
+b. criar um protocolo de aplicação... tô tentando tratar o TCP como um protocolo de mensagens, quando não é
+    network -> application -> GUI
+c. fazer a interface
