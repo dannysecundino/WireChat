@@ -50,4 +50,6 @@ void Server::atender_cliente(){
     // 3. esperar resposta da sala desejada
     std::string sala_desejada = network::receber(csock);
     
+    // teste
+    network::enviar(csock, "OK");
 }
