@@ -1,12 +1,12 @@
 #include "../headers/transport.hpp"
 
 #include <iostream>
-#include <string>
-#include <string_view>
 
 #include <sys/socket.h>     // socket()
 #include <netinet/in.h>     // endereço de socket
 #include <unistd.h>         // close()
+
+#include <stdint.h>
 
 #define BUFFER_SIZE 4096
 
@@ -70,19 +70,20 @@ int transport::aceitar_cliente(int lsock){
     return csock;
 }
 
-void transport::enviar(int csock, std::string_view msg){
-    send(csock, msg.data(), msg.size(), 0);
+void transport::enviar(int csock, char *dado){
+    send(csock, dado, sizeof(dado), 0);
 }
 
-std::string transport::receber(int csock){
+char * transport::receber(int sock){
     char msg[BUFFER_SIZE];
-    ssize_t msgSize = recv(csock, msg, sizeof(msg) - 1, 0);
+    ssize_t msgSize = recv(sock, msg, sizeof(msg) - 1, 0);
+
     if (msgSize > 0){
         msg[msgSize] = '\0';
-        return std::string(msg);
-    } else {
-        return "";
+        return msg;
     }
+    
+    return "";
 }
 
 void transport::fechar_socket(int sock){

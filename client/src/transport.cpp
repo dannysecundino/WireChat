@@ -1,8 +1,6 @@
 #include "../headers/transport.hpp"
 
 #include <iostream>
-#include <string>
-#include <string_view>
 
 #include <sys/socket.h>     // socket()
 #include <netinet/in.h>     // endereço de socket
@@ -51,16 +49,17 @@ int transport::conectar_ao_server(int sock, int PORT){
 
 }
 
-void transport::enviar(int sock, std::string_view msg){
-    send(sock, msg.data(), msg.size(), 0);
+void transport::enviar(int csock, char *dado){
+    send(csock, dado, sizeof(dado), 0);
 }
 
-std::string transport::receber(int sock){
+char * transport::receber(int sock){
     char msg[BUFFER_SIZE];
     ssize_t msgSize = recv(sock, msg, sizeof(msg) - 1, 0);
+
     if (msgSize > 0){
         msg[msgSize] = '\0';
-        return std::string(msg);
+        return msg;
     }
     
     return "";
